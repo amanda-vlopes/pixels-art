@@ -92,7 +92,7 @@ quadroPixel25();
 
 // Requisito 7 - Faça com que cada pixel do quadro tenha largura e altura de 40 pixels e borda preta de 1 pixel de espessura.
 
-quadroPixel.style.width = '300px';
+quadroPixel.style.width = '240px';
 
 // Requisito 8 - Defina a cor preta como cor inicial da paleta de cores
 
@@ -126,16 +126,44 @@ selecionandoCor();
 
 // Requisito 10 - Crie uma função que permita preencher um pixel do quadro com a cor selecionada na paleta de cores.
 
+// const salvandoPixels = (array) => {
+//   localStorage.setItem('pixelBoard', JSON.stringify(array));
+//   return array;
+// };
+
+// Função para salvar a cor junto com a posição
+
 const corPixel = document.getElementsByClassName('pixel');
+
+const corPosicao = (cor, posicao) => {
+  const array = {};
+  array[posicao] = cor;
+  return array;
+};
 
 const colorindoPixel = () => {
   for (let index = 0; index < corPixel.length; index += 1) {
     corPixel[index].addEventListener('click', (event) => {
+      const evento = event;
       const corFundo = document.getElementsByClassName('selected')[0].style.backgroundColor;
-      event.target.style.backgroundColor = corFundo;
+      evento.target.style.backgroundColor = corFundo;
+      corPosicao(evento.target.style.backgroundColor, index);
+      console.log(corPosicao(evento.target.style.backgroundColor, index));
     });
   }
 };
+
+// const corPixel = document.getElementsByClassName('pixel');
+
+// const colorindoPixel = () => {
+//   for (let index = 0; index < corPixel.length; index += 1) {
+//     corPixel[index].addEventListener('click', (event) => {
+//       const evento = event;
+//       const corFundo = document.getElementsByClassName('selected')[0].style.backgroundColor;
+//       evento.target.style.backgroundColor = corFundo;
+//     });
+//   }
+// };
 
 colorindoPixel();
 
@@ -152,3 +180,12 @@ const limpaPixel = () => {
   });
 };
 limpaPixel();
+
+// Requisito 12 - Crie uma função para salvar e recuperar o seu desenho atual no localStorage
+
+// const salvandoPixels = () => {
+//   const pixelBoard = document.getElementById('pixel-board');
+//   console.log(pixelBoard);
+// };
+
+// salvandoPixels();
