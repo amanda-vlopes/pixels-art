@@ -1,16 +1,17 @@
 .color {
     border: black solid 1px;
-    width: 150px;
-    height: 150px;
-    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
 }
 
 .pixel {
     border: black solid 1px;
-    width: 150px;
-    height: 150px;
-    display: inline-flex;
-    padding: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 1px;
     margin: 5px;
+    display: inline-block;
     background-color: white;
 }
+

@@ -76,7 +76,7 @@ const recarregaCores = () => {
 };
 recarregaCores();
 
-// Requisito 6
+// Requisito 6 - Adicione à página um quadro contendo 25 pixels.
 
 const quadroPixel = document.getElementById('pixel-board');
 
@@ -88,3 +88,7 @@ const quadroPixel25 = () => {
   }
 };
 quadroPixel25();
+
+// Requisito 7 - Faça com que cada pixel do quadro tenha largura e altura de 40 pixels e borda preta de 1 pixel de espessura.
+
+quadroPixel.style.width = '300px';
