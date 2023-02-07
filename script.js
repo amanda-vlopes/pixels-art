@@ -13,7 +13,7 @@ cor2.style.backgroundColor = 'rgb(127,255,212)';
 const cor3 = document.getElementsByClassName('color')[3];
 cor3.style.backgroundColor = 'rgb(255,105,180)';
 
-// Requisito 3
+// Requisito 4
 
 // Recuperando botão
 const buttonRandonColor = document.getElementById('button-random-color');
@@ -29,17 +29,67 @@ const gerandoCor = () => {
   return `rgb(${r},${g},${b})`;
 };
 
+// Adicionando função de armazenamento:
+
+const armazenandoCores = (cores) => {
+  localStorage.setItem('colorPalette', JSON.stringify(cores));
+  JSON.parse(localStorage.getItem('colorPalette'));
+};
+
+// const mantendoCores = () => {
+//   if (localStorage !== null) {
+
+//   }
+// }
+// JSON.parse(localStorage.getItem('colorPalette'))
+
 // Adicionando função:
+
+const coresAleatorias = [];
 
 const corPaleta = () => {
   buttonRandonColor.addEventListener('click', () => {
     for (let index = 0; index < paletaDeCores.length; index += 1) {
       if (index === 0) {
-        paletaDeCores[0].style.backgroundColor = ' black';
+        paletaDeCores[0].style.backgroundColor = 'rgb(0,0,0)';
       } else {
         paletaDeCores[index].style.backgroundColor = gerandoCor();
       }
+      coresAleatorias.push(paletaDeCores[index].style.backgroundColor);
     }
+    armazenandoCores(coresAleatorias);
   });
 };
 corPaleta();
+
+// Opção sem adicionar função por fora
+
+// const corPaleta = () => {
+//   buttonRandonColor.addEventListener('click', () => {
+//     for (let index = 0; index < paletaDeCores.length; index += 1) {
+//       if (index === 0) {
+//         paletaDeCores[0].style.backgroundColor = 'rgb(0,0,0)';
+//       } else {
+//         paletaDeCores[index].style.backgroundColor = gerandoCor();
+//       }
+//       coresAleatorias.push(paletaDeCores[index].style.backgroundColor);
+//     }
+//     localStorage.setItem('colorPalette', JSON.stringify(coresAleatorias));
+//     const armazenandoCores = JSON.parse(localStorage.getItem('colorPalette'));
+//     console.log(armazenandoCores);
+//   });
+// };
+// corPaleta();
+
+// Requisito 6
+
+const quadroPixel = document.getElementById('pixel-board');
+
+const quadroPixel25 = () => {
+  for (let index = 0; index < 25; index += 1) {
+    const quadradoPixel = document.createElement('div');
+    quadradoPixel.className = 'pixel';
+    quadroPixel.appendChild(quadradoPixel);
+  }
+};
+quadroPixel25();

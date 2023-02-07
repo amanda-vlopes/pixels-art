@@ -1,6 +1,16 @@
 .color {
     border: black solid 1px;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     display: inline-flex;
+}
+
+.pixel {
+    border: black solid 1px;
+    width: 150px;
+    height: 150px;
+    display: inline-flex;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
 }
