@@ -138,3 +138,17 @@ const colorindoPixel = () => {
 };
 
 colorindoPixel();
+
+// Requisito 11 - Crie um botão que retorne a cor do quadro para a cor inicial.
+
+const limpaPixel = () => {
+  const buttonReset = document.getElementById('clear-board');
+  buttonReset.addEventListener('click', () => {
+    for (let index = 0; index < corPixel.length; index += 1) {
+      if (corPixel[index].style.backgroundColor !== 'white') {
+        corPixel[index].style.backgroundColor = 'white';
+      }
+    }
+  });
+};
+limpaPixel();
