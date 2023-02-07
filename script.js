@@ -92,3 +92,8 @@ quadroPixel25();
 // Requisito 7 - Faça com que cada pixel do quadro tenha largura e altura de 40 pixels e borda preta de 1 pixel de espessura.
 
 quadroPixel.style.width = '300px';
+
+// Requisito 8 - Defina a cor preta como cor inicial da paleta de cores
+
+cor0.classList.add('selected');
+
