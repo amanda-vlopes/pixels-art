@@ -97,3 +97,28 @@ quadroPixel.style.width = '300px';
 
 cor0.classList.add('selected');
 
+// Requisito 9 - Crie uma função para selecionar uma cor na paleta de cores.
+
+// const selecionandoCor = () => {
+//     paletaDeCores[index].addEventListener('click', (event) => {
+//       if (event.target.classList.contains('selected')) {
+//         event.target.classList.remove('selected');
+//       } else {
+//         event.target.classList.add('selected');
+//       }
+//     });
+//   };
+
+// selecionandoCor();
+
+const selecionandoCor = () => {
+  for (let index = 0; index < paletaDeCores.length; index += 1) {
+    paletaDeCores[index].addEventListener('click', (event) => {
+      const corSelecionada = document.getElementsByClassName('selected')[0];
+      corSelecionada.classList.remove('selected');
+      event.target.classList.add('selected');
+    });
+  }
+};
+
+selecionandoCor();
