@@ -66,8 +66,9 @@ corPaleta();
 
 // Função para atribuir as cores de fundo da minha paleta como as cores armazenadas no localStorage
 
+const armazenandoCores = JSON.parse(localStorage.getItem('colorPalette'));
+
 const recarregaCores = () => {
-  const armazenandoCores = JSON.parse(localStorage.getItem('colorPalette'));
   if (armazenandoCores !== null) {
     for (let index = 0; index < paletaDeCores.length; index += 1) {
       paletaDeCores[index].style.backgroundColor = armazenandoCores[index];
@@ -122,3 +123,18 @@ const selecionandoCor = () => {
 };
 
 selecionandoCor();
+
+// Requisito 10 - Crie uma função que permita preencher um pixel do quadro com a cor selecionada na paleta de cores.
+
+const corPixel = document.getElementsByClassName('pixel');
+
+const colorindoPixel = () => {
+  for (let index = 0; index < corPixel.length; index += 1) {
+    corPixel[index].addEventListener('click', (event) => {
+      const corFundo = document.getElementsByClassName('selected')[0].style.backgroundColor;
+      event.target.style.backgroundColor = corFundo;
+    });
+  }
+};
+
+colorindoPixel();
