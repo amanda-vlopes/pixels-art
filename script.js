@@ -124,22 +124,19 @@ const selecionandoCor = () => {
 
 selecionandoCor();
 
-// Requisito 10 - Crie uma função que permita preencher um pixel do quadro com a cor selecionada na paleta de cores.
-
-// const salvandoPixels = (array) => {
-//   localStorage.setItem('pixelBoard', JSON.stringify(array));
-//   return array;
-// };
-
-// Função para salvar a cor junto com a posição
+// Requisito 12 - Função com array para armazenar todas as cores:
 
 const corPixel = document.getElementsByClassName('pixel');
 
-const corPosicao = (cor, posicao) => {
-  const array = {};
-  array[posicao] = cor;
-  return array;
+const salvandoPixel = () => {
+  const arrayCores = [];
+  for (let index = 0; index < corPixel.length; index += 1) {
+    arrayCores.push(corPixel[index].style.backgroundColor);
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(arrayCores));
 };
+
+// Função de colorir os pixels - Requisito 10
 
 const colorindoPixel = () => {
   for (let index = 0; index < corPixel.length; index += 1) {
@@ -147,23 +144,10 @@ const colorindoPixel = () => {
       const evento = event;
       const corFundo = document.getElementsByClassName('selected')[0].style.backgroundColor;
       evento.target.style.backgroundColor = corFundo;
-      corPosicao(evento.target.style.backgroundColor, index);
-      console.log(corPosicao(evento.target.style.backgroundColor, index));
+      salvandoPixel();
     });
   }
 };
-
-// const corPixel = document.getElementsByClassName('pixel');
-
-// const colorindoPixel = () => {
-//   for (let index = 0; index < corPixel.length; index += 1) {
-//     corPixel[index].addEventListener('click', (event) => {
-//       const evento = event;
-//       const corFundo = document.getElementsByClassName('selected')[0].style.backgroundColor;
-//       evento.target.style.backgroundColor = corFundo;
-//     });
-//   }
-// };
 
 colorindoPixel();
 
@@ -181,11 +165,15 @@ const limpaPixel = () => {
 };
 limpaPixel();
 
-// Requisito 12 - Crie uma função para salvar e recuperar o seu desenho atual no localStorage
+// Requisito 12 - Função para reatribuir o valor das divs
 
-// const salvandoPixels = () => {
-//   const pixelBoard = document.getElementById('pixel-board');
-//   console.log(pixelBoard);
-// };
+const armazenandoPixels = JSON.parse(localStorage.getItem('pixelBoard'));
 
-// salvandoPixels();
+const recarregaPixels = () => {
+  if (armazenandoPixels !== null) {
+    for (let index = 0; index < corPixel.length; index += 1) {
+      corPixel[index].style.backgroundColor = armazenandoPixels[index];
+    }
+  }
+};
+recarregaPixels();
