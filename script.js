@@ -13,13 +13,14 @@ cor2.style.backgroundColor = 'rgb(127,255,212)';
 const cor3 = document.getElementsByClassName('color')[3];
 cor3.style.backgroundColor = 'rgb(255,105,180)';
 
-// Requisito 4 - Adicione um botão para gerar cores aleatórias para a paleta de cores.
+// Elementos recuperados fora das funções:
 
-// Recuperando botão
 const buttonRandonColor = document.getElementById('button-random-color');
-
-// recuperando o elemento de cores
 const paletaDeCores = document.getElementsByClassName('color');
+const quadroPixel = document.getElementById('pixel-board');
+const corPixel = document.getElementsByClassName('pixel');
+
+// Requisito 4 - Adicione um botão para gerar cores aleatórias para a paleta de cores.
 
 // Gerando cor aleatoria:
 const gerandoCor = () => {
@@ -79,8 +80,6 @@ recarregaCores();
 
 // Requisito 6 - Adicione à página um quadro contendo 25 pixels.
 
-const quadroPixel = document.getElementById('pixel-board');
-
 const quadroPixel25 = () => {
   for (let index = 0; index < 25; index += 1) {
     const quadradoPixel = document.createElement('div');
@@ -126,8 +125,6 @@ selecionandoCor();
 
 // Requisito 12 - Função com array para armazenar todas as cores:
 
-const corPixel = document.getElementsByClassName('pixel');
-
 const salvandoPixel = () => {
   const arrayCores = [];
   for (let index = 0; index < corPixel.length; index += 1) {
@@ -160,6 +157,7 @@ const limpaPixel = () => {
       if (corPixel[index].style.backgroundColor !== 'white') {
         corPixel[index].style.backgroundColor = 'white';
       }
+      salvandoPixel();
     }
   });
 };
@@ -177,3 +175,32 @@ const recarregaPixels = () => {
   }
 };
 recarregaPixels();
+
+// Requisito 13 - Crie um input que permita à pessoa usuária preencher um novo tamanho para o quadro de pixels.
+
+// Recuperando os elementos que serão utilizados na função
+
+const buttonVQV = document.getElementById('generate-board');
+const boardSize = document.getElementById('board-size');
+
+let numero;
+
+const novoQuadroPixel = () => {
+  buttonVQV.addEventListener('click', () => {
+    quadroPixel.innerHTML = '';
+    numero = boardSize.value;
+    const larguraMaxima = (numero) * 41.5;
+    quadroPixel.style.width = `${larguraMaxima}px`;
+    if (numero > 0) {
+      for (let index = 0; index < numero * numero; index += 1) {
+        const novoPixel = document.createElement('div');
+        novoPixel.className = 'pixel';
+        quadroPixel.appendChild(novoPixel);
+      }
+    } else {
+      alert('Board inválido!');
+    }
+  });
+};
+
+novoQuadroPixel();
