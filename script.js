@@ -98,12 +98,12 @@ selecionandoCor();
 
 // Requisito 12 - Função com array para armazenar todas as cores:
 
-const salvandoPixel = () => {
+const salvandoPixel = (chave) => {
   const arrayCores = [];
   for (let index = 0; index < corPixel.length; index += 1) {
     arrayCores.push(corPixel[index].style.backgroundColor);
   }
-  localStorage.setItem('pixelBoard', JSON.stringify(arrayCores));
+  localStorage.setItem(chave, JSON.stringify(arrayCores));
 };
 
 // Função de colorir os pixels - Requisito 10
@@ -114,7 +114,7 @@ const colorindoPixel = () => {
       const evento = event;
       const corFundo = document.getElementsByClassName('selected')[0].style.backgroundColor;
       evento.target.style.backgroundColor = corFundo;
-      salvandoPixel();
+      salvandoPixel('pixelBoard');
     });
   }
 };
@@ -130,7 +130,7 @@ const limpaPixel = () => {
       if (corPixel[index].style.backgroundColor !== 'white') {
         corPixel[index].style.backgroundColor = 'white';
       }
-      salvandoPixel();
+      salvandoPixel('pixelBoard');
     }
   });
 };
@@ -150,6 +150,7 @@ const recarregaPixels = () => {
 recarregaPixels();
 
 // Requisito 13 - Crie um input que permita à pessoa usuária preencher um novo tamanho para o quadro de pixels.
+// Resquisito 14 - Crie uma função que limite o tamanho mínimo e máximo do quadro de pixels.
 
 // Recuperando os elementos que serão utilizados na função
 
@@ -158,11 +159,7 @@ const boardSize = document.getElementById('board-size');
 
 let numero;
 
-const criandoPixel = () => {
-  const novoPixel = document.createElement('div');
-  novoPixel.className = 'pixel';
-  quadroPixel.appendChild(novoPixel);
-};
+// Função de verificar tamanho definido no input
 
 const verificacaoPixel = () => {
   numero = boardSize.value;
@@ -174,7 +171,10 @@ const verificacaoPixel = () => {
     numero = 50;
   }
   for (let index = 0; index < numero * numero; index += 1) {
-    criandoPixel();
+    const novoPixel = document.createElement('div');
+    novoPixel.className = 'pixel';
+    novoPixel.style.backgroundColor = 'white';
+    quadroPixel.appendChild(novoPixel);
   }
 };
 
@@ -185,6 +185,23 @@ const novoQuadroPixel = () => {
     verificacaoPixel();
     const larguraMaxima = (numero) * 42;
     quadroPixel.style.width = `${larguraMaxima}px`;
+    localStorage.setItem('boardSize', JSON.stringify(quadroPixel.innerHTML));
+    localStorage.setItem('numero', JSON.stringify(numero));
   });
 };
 novoQuadroPixel();
+
+// Requisito 15 - Crie uma função para manter o tamanho novo do board ao recarregar a página
+
+const armazenandoDivs = JSON.parse(localStorage.getItem('boardSize'));
+const numeroInput = JSON.parse(localStorage.getItem('numero'));
+
+const recarregaDivs = () => {
+  if (armazenandoDivs !== null && numeroInput !== null) {
+    quadroPixel.innerHTML = armazenandoDivs;
+    const larguraMaxima = (numeroInput) * 42;
+    quadroPixel.style.width = `${larguraMaxima}px`;
+  }
+};
+
+recarregaDivs();
