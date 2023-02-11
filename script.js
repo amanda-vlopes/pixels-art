@@ -30,21 +30,6 @@ const gerandoCor = () => {
   return `rgb(${r},${g},${b})`;
 };
 
-// Função requisito 4 sem armazenar as cores no localStorage
-
-// const corPaleta = () => {
-//   buttonRandonColor.addEventListener('click', () => {
-//     for (let index = 0; index < paletaDeCores.length; index += 1) {
-//       if (index === 0) {
-//         paletaDeCores[0].style.backgroundColor = 'rgb(0,0,0)';
-//       } else {
-//         paletaDeCores[index].style.backgroundColor = gerandoCor();
-//       }
-//     }
-//   });
-// };
-// corPaleta();
-
 // Requisito 5 - Implemente uma função usando localStorage para que a paleta de cores gerada aleatoriamente seja mantida após recarregar a página. - Função do requisito 4 usada para armazenar as cores geradas.
 
 const corPaleta = () => {
@@ -98,18 +83,6 @@ quadroPixel.style.width = '240px';
 cor0.classList.add('selected');
 
 // Requisito 9 - Crie uma função para selecionar uma cor na paleta de cores.
-
-// const selecionandoCor = () => {
-//     paletaDeCores[index].addEventListener('click', (event) => {
-//       if (event.target.classList.contains('selected')) {
-//         event.target.classList.remove('selected');
-//       } else {
-//         event.target.classList.add('selected');
-//       }
-//     });
-//   };
-
-// selecionandoCor();
 
 const selecionandoCor = () => {
   for (let index = 0; index < paletaDeCores.length; index += 1) {
@@ -185,22 +158,33 @@ const boardSize = document.getElementById('board-size');
 
 let numero;
 
+const criandoPixel = () => {
+  const novoPixel = document.createElement('div');
+  novoPixel.className = 'pixel';
+  quadroPixel.appendChild(novoPixel);
+};
+
+const verificacaoPixel = () => {
+  numero = boardSize.value;
+  if (numero <= 0) {
+    alert('Board inválido!');
+  } else if (numero <= 5) {
+    numero = 5;
+  } else if (numero >= 50) {
+    numero = 50;
+  }
+  for (let index = 0; index < numero * numero; index += 1) {
+    criandoPixel();
+  }
+};
+
 const novoQuadroPixel = () => {
   buttonVQV.addEventListener('click', () => {
     quadroPixel.innerHTML = '';
     numero = boardSize.value;
-    const larguraMaxima = (numero) * 41.5;
+    verificacaoPixel();
+    const larguraMaxima = (numero) * 42;
     quadroPixel.style.width = `${larguraMaxima}px`;
-    if (numero > 0) {
-      for (let index = 0; index < numero * numero; index += 1) {
-        const novoPixel = document.createElement('div');
-        novoPixel.className = 'pixel';
-        quadroPixel.appendChild(novoPixel);
-      }
-    } else {
-      alert('Board inválido!');
-    }
   });
 };
-
 novoQuadroPixel();
