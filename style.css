@@ -17,11 +17,11 @@
   height: 40px;
   display: inline-block;
   background-color: white;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 #pixel-board {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
