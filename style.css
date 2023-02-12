@@ -33,7 +33,7 @@ body {
   margin-right: auto;
   margin-left: auto;
   background-image: url('https://brancopapeldeparede.fbitsstatic.net/img/p/papel-de-parede-degrade-cinza-100-71220/241067-1.jpg?w=817&h=1108&v=no-change&qs=ignore');
-  font-family: 'Pangolin', cursive;
+  font-family: Pangolin, cursive;
 }
 
 main {
@@ -59,14 +59,15 @@ header {
 button {
   background-color: rgb(103, 103, 103);
   color: white;
-  font-family: 'Pangolin', cursive;
+  font-family: Pangolin, cursive;
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px black;
 }
+
 #board-size {
-  font-family: 'Pangolin', cursive;
+  font-family: Pangolin, cursive;
   font-size: 20px;
   width: 40px;
 }
