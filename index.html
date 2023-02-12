@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paleta de Cores</title>
 
-    <link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paleta de Cores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
-    <header>
-        <h1 id="title">Paleta de Cores</h1>
-    </header>
 
-<main>
+<body>
+  <header>
+    <h1 id="title">Paleta de Cores</h1>
+  </header>
+
+  <main>
     <section id="color-palette">
-        <div class="color"></div>
-        <div class="color"></div>
-        <div class="color"></div>
-        <div class="color"></div>
+      <div class="color"></div>
+      <div class="color"></div>
+      <div class="color"></div>
+      <div class="color"></div>
+    </section>
+    <section>
+      <button id="button-random-color">Cores aleatórias</button>
+      <button id="clear-board">Limpar</button>
+    </section>
+    <br>
+    <section id="input-number">
+      <input type="number" name="board-size" id="board-size" min="1">
+      <button id="generate-board">VQV</button>
     </section>
 
-<button id="button-random-color">Cores aleatórias</button>
-<button id="clear-board">Limpar</button>
-<br>
-<input type="number" name="board-size" id="board-size" min="1">
-<button id="generate-board">VQV</button>
-   
-<section id="pixel-board"></section>
+    <section id="board">
+      <section id="pixel-board"></section>
+    </section>
 
-</main>
-<script src="script.js"></script>
+  </main>
+  <script src="script.js"></script>
 </body>
+
 </html>

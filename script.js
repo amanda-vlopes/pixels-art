@@ -48,7 +48,6 @@ const corPaleta = () => {
     localStorage.setItem('colorPalette', JSON.stringify(coresAleatorias));
   });
 };
-corPaleta();
 
 // Função para atribuir as cores de fundo da minha paleta como as cores armazenadas no localStorage
 
@@ -61,7 +60,6 @@ const recarregaCores = () => {
     }
   }
 };
-recarregaCores();
 
 // Requisito 6 - Adicione à página um quadro contendo 25 pixels.
 
@@ -72,7 +70,6 @@ const quadroPixel25 = () => {
     quadroPixel.appendChild(quadradoPixel);
   }
 };
-quadroPixel25();
 
 // Requisito 7 - Faça com que cada pixel do quadro tenha largura e altura de 40 pixels e borda preta de 1 pixel de espessura.
 
@@ -93,8 +90,6 @@ const selecionandoCor = () => {
     });
   }
 };
-
-selecionandoCor();
 
 // Requisito 12 - Função com array para armazenar todas as cores:
 
@@ -119,8 +114,6 @@ const colorindoPixel = () => {
   }
 };
 
-colorindoPixel();
-
 // Requisito 11 - Crie um botão que retorne a cor do quadro para a cor inicial.
 
 const limpaPixel = () => {
@@ -134,7 +127,6 @@ const limpaPixel = () => {
     }
   });
 };
-limpaPixel();
 
 // Requisito 12 - Função para reatribuir o valor das divs
 
@@ -147,7 +139,6 @@ const recarregaPixels = () => {
     }
   }
 };
-recarregaPixels();
 
 // Requisito 13 - Crie um input que permita à pessoa usuária preencher um novo tamanho para o quadro de pixels.
 // Resquisito 14 - Crie uma função que limite o tamanho mínimo e máximo do quadro de pixels.
@@ -185,11 +176,11 @@ const novoQuadroPixel = () => {
     verificacaoPixel();
     const larguraMaxima = (numero) * 42;
     quadroPixel.style.width = `${larguraMaxima}px`;
+    colorindoPixel();
     localStorage.setItem('boardSize', JSON.stringify(quadroPixel.innerHTML));
     localStorage.setItem('numero', JSON.stringify(numero));
   });
 };
-novoQuadroPixel();
 
 // Requisito 15 - Crie uma função para manter o tamanho novo do board ao recarregar a página
 
@@ -204,4 +195,14 @@ const recarregaDivs = () => {
   }
 };
 
-recarregaDivs();
+window.onload = () => {
+  corPaleta();
+  recarregaCores();
+  quadroPixel25();
+  selecionandoCor();
+  novoQuadroPixel();
+  recarregaDivs();
+  colorindoPixel();
+  limpaPixel();
+  recarregaPixels();
+};
