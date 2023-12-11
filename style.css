@@ -25,7 +25,7 @@
 }
 
 #pixel-board {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 body {
@@ -53,6 +53,7 @@ header {
 }
 
 #color-palette {
+  margin-top: 10px;
   height: 80px;
 }
 
@@ -69,5 +70,5 @@ button {
 #board-size {
   font-family: Pangolin, cursive;
   font-size: 20px;
-  width: 40px;
+  width: 250px;
 }

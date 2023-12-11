@@ -19,9 +19,13 @@
     "test": "cypress run",
     "lint": "eslint --no-inline-config --ext .js,.jsx --no-error-on-unmatched-pattern -c .eslintrc.json .",
     "lint:styles": "stylelint **/*.css --config .stylelintrc.json --ignore-disables --allow-empty-input",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "eslint-config-trybe-fundamentals": "1.1.0"
-  }
+    "eslint-config-trybe-fundamentals": "1.1.0",
+    "gh-pages": "^6.1.0"
+  },
+  "homepage": "https://amanda-vlopes.github.io/pixels-art"
 }
