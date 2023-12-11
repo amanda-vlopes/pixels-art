@@ -38,4 +38,8 @@ Caso queira ver mais sobre o projeto em sua maquina local siga as etapas:
   npm install
 ```
 
-## O projeto
+## Acesse o projeto
+
+Acesse o site e experimente fazer uma arte com pixels!
+
+https://amanda-vlopes.github.io/pixels-art/
